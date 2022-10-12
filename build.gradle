@@ -1,9 +1,12 @@
 buildscript {
     ext {
-        composeVersion = '1.1.1'
+        composeVersion = '1.2.1'
+        composeCompilerVersion = '1.2.0'
         gradleVersion = '7.2.0'
-        kotlinVersion = '1.6.10'
-        composeNavigationVersion = '2.5.1'
+        kotlinVersion = '1.7.0'
+        composeNavigationVersion = '2.5.2'
+        datastoreVersion = '1.0.0'
+        roomVersion = '2.4.3'
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
@@ -13,7 +16,7 @@ buildscript {
 plugins {
     id 'com.android.application' version '7.2.0' apply false
     id 'com.android.library' version '7.2.0' apply false
-    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
 }
 
 task clean(type: Delete) {

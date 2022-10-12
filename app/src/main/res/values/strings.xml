@@ -37,4 +37,5 @@
     <string name="bills">Bills</string>
     <string name="sort">Sort</string>
     <string name="see_all">SEE ALL</string>
+    <string name="root_ip">10.10.99.170</string>
 </resources>
