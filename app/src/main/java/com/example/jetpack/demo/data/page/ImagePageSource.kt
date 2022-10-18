@@ -5,7 +5,8 @@ import androidx.paging.PagingState
 import com.example.jetpack.demo.data.repositories.DemoRepository
 
 class ImagePageSource(
-    private val demoRepository: DemoRepository
+    private val demoRepository: DemoRepository,
+    private val updatePageInfo: (Int) -> Unit = {}
 ) : PagingSource<Int, String>() {
 
     private val TAG = "--ComicPage"
@@ -21,6 +22,7 @@ class ImagePageSource(
             if (result.code == 200) {
                 val data = result.data
                 val pages = data.pages
+                updatePageInfo.invoke(data.total)
                 LoadResult.Page(
                     data = data.images,
                     prevKey = if (currentPage == 1) null else currentPage - 1,

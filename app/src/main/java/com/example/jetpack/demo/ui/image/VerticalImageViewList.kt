@@ -1,6 +1,5 @@
 package com.example.jetpack.demo.ui.image
 
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,17 +7,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
@@ -31,7 +24,9 @@ import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
 fun ImagePreview() {
-    VerticalImageBrowserItem("1.jpg", 0)
+
+
+    // VerticalImageBrowserItem("1.jpg", 0)
 }
 
 @Composable
@@ -101,16 +96,16 @@ fun VerticalImageBrowserItem(path: String, page: Int = 0) {
         },
         modifier = Modifier
             .transformable(state = state)
-            .graphicsLayer {  //布局缩放、旋转、移动变换
-                scaleX = scale
-                scaleY = scale
-                translationX = offset.x
-                translationY = offset.y
+        /* .graphicsLayer {  //布局缩放、旋转、移动变换
+             scaleX = scale
+             scaleY = scale
+             translationX = offset.x
+             translationY = offset.y
 
-                /*val pageOffset = pagerScope.calculateCurrentOffsetForPage(page = page).absoluteValue
+             *//*val pageOffset = pagerScope.calculateCurrentOffsetForPage(page = page).absoluteValue
                 if (pageOffset == 1.0f) {
                     scale = 1.0f
-                }*/
+                }*//*
             }
             .pointerInput(Unit) {
                 detectTapGestures(
@@ -122,6 +117,6 @@ fun VerticalImageBrowserItem(path: String, page: Int = 0) {
 
                     }
                 )
-            }
+            }*/
     )
 }

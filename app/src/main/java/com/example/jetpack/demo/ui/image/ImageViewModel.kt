@@ -37,11 +37,11 @@ class ImageViewModel(context: Context) : ViewModel() {
     }.flowOn(Dispatchers.IO)
 
 
-    fun getPages(): Flow<PagingData<String>> {
+    fun getPages(updatePageInfo: (Int) -> Unit = {}): Flow<PagingData<String>> {
         return Pager(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
-                ImagePageSource(demoRepository)
+                ImagePageSource(demoRepository, updatePageInfo)
             }
         ).flow
     }

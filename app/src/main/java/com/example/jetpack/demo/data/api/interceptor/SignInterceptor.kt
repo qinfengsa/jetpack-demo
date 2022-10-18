@@ -1,3 +1,4 @@
+/*
 package com.example.jetpack.demo.data.api.interceptor
 
 import okhttp3.Headers
@@ -45,9 +46,11 @@ class SignInterceptor : Interceptor {
         return builder.build()
     }
 
-    /**
-     * post 请求参数获取
-     */
+    */
+/**
+ * post 请求参数获取
+ *//*
+
     private fun bodyToString(request: Request): String {
         val copy = request.newBuilder().build()
         val buffer = Buffer()
@@ -55,3 +58,4 @@ class SignInterceptor : Interceptor {
         return buffer.readUtf8()
     }
 }
+*/

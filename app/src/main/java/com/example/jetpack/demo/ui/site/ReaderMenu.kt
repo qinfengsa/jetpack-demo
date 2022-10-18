@@ -1,32 +1,14 @@
 package com.example.jetpack.demo.view
 
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.ProgressIndicatorDefaults
-import androidx.compose.material.Slider
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ChevronLeft
 import androidx.compose.material.icons.rounded.NavigateNext
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.roundToInt
@@ -39,7 +21,6 @@ fun ReaderMenu() {
     ReaderModeSetting()
     ReaderProgressSlider(
         currentPage = currentPage, pageCount = 20, onNewPageClicked = {},
-        isRtL = true
     )
     NavigateChapters()
 }
@@ -60,7 +41,8 @@ private fun ReaderMenuToolbar(onCloseSideMenuClicked: () -> Unit) {
 @Composable
 fun ReaderModeSetting() {
     Row(
-        Modifier.fillMaxWidth()
+        Modifier
+            .fillMaxWidth()
             .defaultMinSize(minHeight = 56.dp)
             .padding(horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -80,12 +62,11 @@ fun ReaderModeSetting() {
 
 
 @Composable
-private fun ReaderProgressSlider(
+fun ReaderProgressSlider(
     modifier: Modifier = Modifier,
     currentPage: Int,
     pageCount: Int,
-    onNewPageClicked: (Int) -> Unit,
-    isRtL: Boolean
+    onNewPageClicked: (Int) -> Unit
 ) {
     val animatedProgress by animateFloatAsState(
         targetValue = currentPage.toFloat(),
@@ -101,16 +82,9 @@ private fun ReaderProgressSlider(
             }
         },
         valueRange = 0F..pageCount.toFloat(),
-        steps = pageCount,
         onValueChangeFinished = { isValueChanging = false },
-        modifier = modifier.let {
-            if (isRtL) {
-                it then Modifier.rotate(180F)
-            } else {
-                it
-            }
-        }
-    )
+
+        )
 }
 
 @Composable

@@ -1,7 +1,6 @@
 package com.example.jetpack.demo.data.api
 
 import com.example.jetpack.demo.data.DemoConstant
-import com.example.jetpack.demo.data.api.interceptor.SignInterceptor
 import com.example.jetpack.demo.data.api.model.DemoResult
 import com.example.jetpack.demo.data.api.model.ImageData
 import okhttp3.OkHttpClient
@@ -22,7 +21,7 @@ interface DemoApi {
 
 
             val okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(SignInterceptor())
+                //.addInterceptor(SignInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
                 .build()
